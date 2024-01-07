@@ -1,6 +1,6 @@
-[![GitHub License](https://img.shields.io/github/license/wehaaportal/Fast-Food-System)](https://github.com/wehaaportal/Fast-Food-System/blob/main/LICENSE) 
-[![GitHub Release](https://img.shields.io/github/v/release/wehaaportal/Fast-Food-System?include_prereleases)](https://github.com/wehaaportal/Fast-Food-System/releases)
-![GitHub Size](https://img.shields.io/github/repo-size/wehaaportal/Fast-Food-System)
+[![GitHub License](https://img.shields.io/github/license/wehaaportal/Fast-Food)](https://github.com/wehaaportal/Fast-Food/blob/main/LICENSE) 
+[![GitHub Release](https://img.shields.io/github/v/release/wehaaportal/Fast-Food?include_prereleases)](https://github.com/wehaaportal/Fast-Food/releases)
+![GitHub Size](https://img.shields.io/github/repo-size/wehaaportal/Fast-Food)
 
 # Fast Food Ordering System for Restaurants
 ==========================================================================
