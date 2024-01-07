@@ -32,10 +32,10 @@ LOG_FORMAT = "[%(asctime)s] %(levelname)s|%(lineno)d::%(process)d %(name)s:%(fun
 TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 # URLS
-BUGS_PAGE = "https://github.com/wehaaportal/Fast-Food-System/issues"
-URL_VERSION = "https://raw.githubusercontent.com/wehaaportal/Fast-Food-System/main/version"
-URL_UPDATE = 'https://github.com/wehaaportal/Fast-Food-System/releases/latest'
-WIKI_URL = 'https://github.com/wehaaportal/Fast-Food-System/wiki'
+BUGS_PAGE = "https://github.com/wehaaportal/Fast-Food/issues"
+URL_VERSION = "https://raw.githubusercontent.com/wehaaportal/Fast-Food/main/version"
+URL_UPDATE = 'https://github.com/wehaaportal/Fast-Food/releases/latest'
+WIKI_URL = 'https://github.com/wehaaportal/Fast-Food/wiki'
 
 # OTHERS
 FAVICON_FILE = os.sep.join(['fast_food', 'assets', 'icons.ico'])
