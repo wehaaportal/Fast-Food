@@ -4,6 +4,8 @@
     <file>wehaaportal.png</file>
   </qresource>
   <qresource prefix="Icons">
+    <file>png/icons8-chef-100.png</file>
+    <file>png/icons8-chef-hat-100.png</file>
     <file>png/icons8-about-100.png</file>
     <file>png/icons8-access-denied-100.png</file>
     <file>png/icons8-account-100.png</file>
