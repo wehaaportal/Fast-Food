@@ -42,7 +42,7 @@ def CreateBackup():
 
             Settings().TIME_BACKUP = time.strftime(TIME_FORMAT)
             if Settings().NOTIFY_BACKUP:
-                Notify.info("Backup", "Backup created successfully.")
+                Notify().info("Backup", "Backup created successfully.")
     except Exception as e:
         log().error(f'Error creating backup: {e}')
         raise e

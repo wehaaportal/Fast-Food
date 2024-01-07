@@ -13,7 +13,7 @@ from PyQt6.QtCore import pyqtSignal, QObject
 ''' Core '''
 from fast_food.define import URL_VERSION, URL_UPDATE
 from fast_food.core.settings import *
-from fast_food.core.notify import *
+from fast_food.core.notify import Notify
 
 ''' Internal Logs '''
 def log():
@@ -36,18 +36,22 @@ class Updater(QObject):
             current_version = Settings().VERSION
 
             if LooseVersion(current_version) < LooseVersion(web_version):
+                log().info(f'New version found: {web_version}')
                 if Settings().NOTIFY_UPDATES:
-                    Notify.info("Updates", f"New Version: {web_version}. Click here to download", callback=self.callback)
-                else:
-                    log().info(f'New version found: {web_version}')
-
+                    Notify().info("Updates", f"New Version: {web_version}. Click here to download", callback=self.callback)
+             
                 Settings().NEW_UPDATES = True
             else:
-                Settings().NEW_UPDATES = False
                 log().info('No new version available')
+                if Settings().NOTIFY_UPDATES:
+                    Notify().info("Updates", "No new version available") 
+
+                Settings().NEW_UPDATES = False
+                pass
         except Exception as e:
             log().error('Error while checking updates', exc_info=True)
-
-        self.finished.emit()
+        finally:
+            self.finished.emit()
+        
 
 

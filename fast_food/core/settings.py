@@ -143,7 +143,7 @@ class Settings(BaseSettings):
 
 	@property
 	def BACKUP(self) -> bool:
-		return self.Sett.value("Backup/BACKUP", False, type=bool)
+		return self.Sett.value("Backup/BACKUP", True, type=bool)
 
 	@BACKUP.setter
 	def BACKUP(self, value):

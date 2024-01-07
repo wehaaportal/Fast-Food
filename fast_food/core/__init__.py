@@ -69,12 +69,13 @@ def start_app(apps, Settings):
 			if Settings().UPDATES:
 				_Splash.showMessage("Checking for updates")
 				Updater()
-				time.sleep(0.8)
-
+				time.sleep(0.4)
+			
 			if Settings().BACKUP and TimeBackup():
 				_Splash.showMessage("Created backup")
-				CreatedBackup()
-				time.sleep(0.8)	
+				CreateBackup()
+				time.sleep(0.4)	
+			
 
 	except Exception as e:
 		log().warning(TR_ERROR_INTERNO_X.format(e))
