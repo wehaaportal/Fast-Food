@@ -52,6 +52,12 @@ class WLModel(QtWidgets.QMainWindow, Ui_fromLogin):
 		except Exception as e:
 			log().error(TR_ERROR_MODEL_INTERNO_X.format(__name__,e))
 
+	# Key Press
+	def keyPressEvent(self, e):
+		if e.key() == QtCore.Qt.Key_Return:
+			if self._validate:
+				self._iniciar()	
+
 	def _validate(self):
 		def set_style(widget, valid):
 			color = "7, 126, 246" if valid else "255, 0, 0"
