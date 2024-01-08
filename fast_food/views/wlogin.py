@@ -90,6 +90,7 @@ class Ui_fromLogin(object):
         self.lblWelcome.setText(_translate("fromLogin", "Welcome Back"))
         self.logoWehaa.setToolTip(_translate("fromLogin", "Wehaa Portal Soft."))
 
+import fast_food.assets.resource
 '''
 import resource
 

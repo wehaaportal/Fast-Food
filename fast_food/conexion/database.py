@@ -75,14 +75,16 @@ class DBase:
             log().warning('Error deleting data from DB: %s', e)
 
     def findOne(self, table, where_clause):
+        aux = []
         try:
             query = f'SELECT * FROM {table} WHERE {where_clause} LIMIT 1'
             self.cursor.execute(query)
             result = self.cursor.fetchone()
-            return result
+            aux.append(result) #if result is not None else None
         except sqlite3.Error as e:
             log().warning('Error finding one record in DB: %s', e)
-            return None
+
+        return aux if aux is not None else None
 
     def selectAll(self, table):
         try:

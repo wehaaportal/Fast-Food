@@ -19,6 +19,8 @@ from PyQt6.QtWidgets import QApplication, QMainWindow
 import fast_food.assets.resource
 
 ''' Model '''
+from fast_food.model.wmain import WMModel
+from fast_food.model.wlogin import WLModel
 
 ''' Internal Logs '''
 def log():
@@ -52,7 +54,7 @@ def start_app(apps, Settings):
 	try:
 		log().info(TR_INIT_APP_X.format(Settings().VERSION, platform.python_version(), sys.platform))
 
-		if Settings().SPLASH_FLAG:
+		if not Settings().SPLASH_FLAG:
 			log().info(TR_INIT_X.format(TR_SPLASH_SCREEN))
 			_Splash = SplashScreen()
 
@@ -74,9 +76,37 @@ def start_app(apps, Settings):
 			if Settings().BACKUP and TimeBackup():
 				_Splash.showMessage("Created backup")
 				CreateBackup()
-				time.sleep(0.4)	
-			
+				time.sleep(0.4)
 
+			_Splash.showMessage(TR_SPLASH_INIT)
+			time.sleep(0.5)	
+
+			# LOAD PLUGINS
+			window 		= WMModel(apps)
+			security 	= WLModel(window)
+
+			# LOGIN
+			if Settings().LOGIN_FLAG:
+				window.hide()
+				log().info(TR_INIT_X.format(TR_SECURITY))
+				_Splash.showMessage(TR_SPLASH_INIT_X.format(TR_SECURITY))
+				time.sleep(1)
+				security.show()
+				_Splash.finish(security)
+
+		else:
+			log().info(TR_INIT_SPLASHNOT)
+
+			#LOAD PLUGINS
+			window 		= WMModel()
+			security 	= WLModel(window)
+
+			if Settings().LOGIN_FLAG:
+				window.hide()
+				log().info(TR_INIT_X.format(TR_SECURITY))
+				time.sleep(1)
+				security.show()	
+			
 	except Exception as e:
 		log().warning(TR_ERROR_INTERNO_X.format(e))
 

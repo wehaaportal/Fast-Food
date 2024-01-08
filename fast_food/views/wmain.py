@@ -285,6 +285,7 @@ class Ui_MainWindow(object):
         self.pic_online.setToolTip(_translate("MainWindow", "On - line"))
         self.pic_trial.setToolTip(_translate("MainWindow", "Versión trial"))
 
+import fast_food.assets.resource
 '''
 if __name__ == "__main__":
     import sys

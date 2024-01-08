@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*- 
 
-import logging
+import logging, base64
 
 from PyQt6.QtCore import QSettings, QDate
 
