@@ -54,8 +54,8 @@ class WLModel(QtWidgets.QMainWindow, Ui_fromLogin):
 
 	# Key Press
 	def keyPressEvent(self, e):
-		if e.key() == QtCore.Qt.Key_Return:
-			if self._validate:
+		if e.key() == 16777220:
+			if hasattr(self, '_validate') and self._validate:
 				self._iniciar()	
 
 	def _validate(self):
