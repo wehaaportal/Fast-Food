@@ -54,7 +54,7 @@ def start_app(apps, Settings):
 	try:
 		log().info(TR_INIT_APP_X.format(Settings().VERSION, platform.python_version(), sys.platform))
 
-		if not Settings().SPLASH_FLAG:
+		if Settings().SPLASH_FLAG:
 			log().info(TR_INIT_X.format(TR_SPLASH_SCREEN))
 			_Splash = SplashScreen()
 
