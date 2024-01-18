@@ -5,6 +5,7 @@
 import signal, sys, logging, platform, time
 
 ''' Core '''
+from fast_food.define import *
 from fast_food.core.translations import *
 from fast_food.core.splash import SplashScreen
 from fast_food.core.design import Design
@@ -68,7 +69,7 @@ def start_app(apps, Settings):
 				time.sleep(0.5)
 
 
-			if Settings().UPDATES:
+			if Settings().UPDATES and is_connected_to_internet():
 				_Splash.showMessage("Checking for updates")
 				Updater()
 				time.sleep(0.4)

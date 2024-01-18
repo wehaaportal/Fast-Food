@@ -27,6 +27,7 @@ class Installer:
 				self.create_admin_user()
 				self.ok = True
 				print(f'Installed {fast_food.__title__}')
+				restart_program()
 			else:
 				self.ok = True
 		except Exception as e:
@@ -40,8 +41,7 @@ class Installer:
 
 	def generate_key(self, _long=32) -> str:
 		alphanumb = string.ascii_letters + string.digits
-		secrets_key = ''.join(secrets.choice(alphanumb) for _ in range(_long))
-		self.key = secrets_key
+		self.key = secrets_key = ''.join(secrets.choice(alphanumb) for _ in range(_long))
 		return secrets_key
 
 	def configure_settings(self):

@@ -231,7 +231,7 @@ class Settings(BaseSettings):
 	# ==========
 	@property
 	def SECRET_KEY(self) -> str:
-		return self.Sett.value("Crypt/SECRET_KEY", "X7Sab6LFWwjEv1UYlWZAEDZ1M6V04hk8", type=str)
+		return self.Sett.value("Crypt/SECRET_KEY", True, type=str)
 
 	# User
 	# ==========

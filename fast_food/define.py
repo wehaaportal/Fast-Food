@@ -38,14 +38,14 @@ URL_UPDATE = 'https://github.com/wehaaportal/Fast-Food/releases/latest'
 WIKI_URL = 'https://github.com/wehaaportal/Fast-Food/wiki'
 
 # OTHERS
-FAVICON_FILE = os.sep.join(['fast_food', 'assets', 'icons.ico'])
+FAVICON_FILE = os.sep.join(['fast_food', 'assets', 'wehaaportal.ico'])
 SPLASH_IMG_FILE = os.sep.join(['fast_food', 'assets', 'splashscreen.png'])
 
 def restart_program():
     python = sys.executable
     os.execl(python, python, *sys.argv)
 
-def isOnline():
+def is_connected_to_internet():
     try:
         socket.gethostbyname("google.com")
         connection = socket.create_connection(("google.com", 80), timeout=1)
