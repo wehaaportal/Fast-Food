@@ -18,7 +18,7 @@ class Installer:
 		self.reset = reset
 		self.key = ''
 
-	def install(self):
+	def install(self) -> bool:
 		try:
 			if not os.path.exists(HOME_APP_PATH):
 				print(f'Installing {fast_food.__title__}')
@@ -64,6 +64,7 @@ class Installer:
 		if not self.reset:
 			qsettings.setValue("FIRSTRUN", True)
 
+		qsettings.setValue("WELCOME", True)
 		qsettings.setValue("SiderBar/ACTIVE", True)
 
 		#Backup

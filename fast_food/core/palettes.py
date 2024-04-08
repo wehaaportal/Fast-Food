@@ -16,7 +16,7 @@ class DarkFusionPalette(QPalette):
         self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.ToolTipText, Qt.GlobalColor.white)
         self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Text, Qt.GlobalColor.white)
         self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Button, QColor(56, 56, 56))
-        self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.ButtonText, Qt.white)
+        self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.ButtonText, Qt.GlobalColor.white)
         self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.BrightText, QColor(0, 128, 152))
         self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Link, QColor(42, 130, 218))
         self.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Highlight, QColor(0, 128, 152))

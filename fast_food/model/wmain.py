@@ -3,14 +3,18 @@
 import time
 from PyQt6 import QtWidgets, QtGui, QtCore
 from PyQt6.QtCore import Qt, QTimer
-from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtGui import QPixmap, QAction, QIcon
+from PyQt6.QtWidgets import QMessageBox, QMenu, QMdiSubWindow
+from PyQt6.uic import loadUi
 
 ''' Load '''
-from fast_food.define import is_connected_to_internet as Internet
+from fast_food.define import GUI_PATH, is_connected_to_internet as Internet
 from fast_food.core.settings import *
 from fast_food.core.translations import *
 from fast_food.core.notify import Notify
+
+''' Model '''
+from fast_food.model.wlogin import WLModel
 
 ''' PyQt6 Gui '''
 from fast_food.views.wmain import Ui_MainWindow
@@ -23,6 +27,36 @@ def log():
 	return logging.getLogger(__name__) #.info() .debug() .warning() .error()
 
 ''' Class '''
+class welcomeModel(QMdiSubWindow):
+	def __init__(self, mdi_area):
+		super().__init__()
+
+		loadUi(f'{GUI_PATH}/winicio.ui', self)
+		self.mdi_area = mdi_area
+
+		self.chk_init.setChecked(Settings().WELCOME)
+
+		# Desactivar botones de la barra de título y quitar todos los bordes
+		self.setWindowFlag(Qt.WindowType.WindowMinimizeButtonHint, False)
+		self.setWindowFlag(Qt.WindowType.WindowMaximizeButtonHint, False)
+		self.setWindowFlag(Qt.WindowType.FramelessWindowHint, True)
+
+	def setCenter(self):
+		mdi_area_size = self.mdi_area.size()
+		sub_window_size = self.size()
+		self.setGeometry(
+			(mdi_area_size.width() - sub_window_size.width()) // 2,
+			(mdi_area_size.height() - sub_window_size.height()) // 2,
+			sub_window_size.width(),
+			sub_window_size.height()
+		)
+
+	def closeEvent(self, event):
+		Settings().WELCOME = self.chk_init.isChecked()
+		self.close()
+
+
+
 class WMModel(QtWidgets.QMainWindow, Ui_MainWindow):
 	bloqueo = 0
 	def __init__(self, parent=None):
@@ -46,6 +80,11 @@ class WMModel(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.mdiArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
 			self.mdiArea.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
 
+			#Welcome 
+			Welcome_window = welcomeModel(self.mdiArea)
+			self.mdiArea.addSubWindow(Welcome_window)
+			Welcome_window.setCenter()
+
 			if not Settings().SIDERBAR:
 				self.siderBar_2.hide()
 
@@ -56,9 +95,31 @@ class WMModel(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.timer.timeout.connect(self.check_internet_connection)
 			self.timer.start(5000)
 
+			self.btn_security.clicked.connect(self.openLogins)
+			self.btn_exit.clicked.connect(self.openLogins)
+
+			if Settings().WELCOME:
+				 Welcome_window.show()
 
 		except Exception as e:
 			log().error(TR_ERROR_MODEL_INTERNO_X.format(__name__,e))
+
+	def openLogins(self):
+		self.bloqueo = 1
+		self.security 	= WLModel(self)
+		log().info("Bloquear Pantalla")	
+		self.mdiArea.closeAllSubWindows()	
+		#self.close()
+		self.hide()
+		self.security.lblWelcome.setText("Locked screen") #"Welcome Back"
+		self.security.lblSlogan.setText("Security was activated") #"Nice to see you again"
+		self.security.txtUser.setText(Settings().USER_NAME)
+		self.security.txtPass.setText("")
+		Settings().USER_NAME = TR_FASTFOOD
+		Settings().USER_ROLES = TR_FASTFOOD		
+		self.security.show()
+		self.security.activateWindow()
+		self.bloqueo = 0
 
 	def SBcheck(self):
 		if self.btn_sidebar.isChecked() and not Settings().SIDERBAR:
@@ -76,6 +137,14 @@ class WMModel(QtWidgets.QMainWindow, Ui_MainWindow):
 			#print("internet off")
 			self.pic_online.setPixmap(QPixmap(":/Icons/png/icons8-wi-fi-disconnected-100.png"))
 			self.pic_online.setToolTip("Off-line")
+
+	# UI and Mouse Interaction functions
+	def contextMenuEvent(self, event):
+		cmenu = QMenu(self)
+		quitAct = cmenu.addAction(QIcon(":/Icons/png/icons8-exit-100.png"), "Salir")
+		action = cmenu.exec(self.mapToGlobal(event.pos()))
+		if action == quitAct:
+			self.close()
 
 	def closeEvent(self, event):
 		if self.bloqueo == 0:

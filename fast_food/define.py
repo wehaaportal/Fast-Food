@@ -17,6 +17,8 @@ BACKUP_PATH = os.path.join(HOME_APP_PATH, "backups")
 DATABASE_PATH = os.path.join(HOME_APP_PATH, "sqldb")
 LOG_PATH = os.path.join(HOME_APP_PATH, 'logs')
 KEYPEM_PATH = os.path.join(HOME_APP_PATH, 'keypem')
+GUI_PATH = os.path.join(WORKING_FOLDER, 'fast_food', 'assets','gui')
+THEME_PATH = os.path.join(WORKING_FOLDER, 'static','themes')
 
 # Style sheet
 STYLE_SHEET = os.path.join(WORKING_FOLDER, 'static', 'style')

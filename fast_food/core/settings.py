@@ -90,6 +90,14 @@ class Settings(BaseSettings):
 	def FIRSTRUN(self, value):
 		self.Sett.setValue("FIRSTRUN", bool(value)) 
 
+	@property
+	def WELCOME(self) -> bool:
+		return self.Sett.value("WELCOME", True, type=bool)
+
+	@WELCOME.setter
+	def WELCOME(self, value):
+		self.Sett.setValue("WELCOME", bool(value)) 
+
 	# Logs
 	# ==========
 	@property

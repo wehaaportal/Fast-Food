@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormInicio</class>
+ <widget class="QWidget" name="FormInicio">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Inicio</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resource.qrc">
+    <normaloff>:/Wehaa/wehaaportal.png</normaloff>:/Wehaa/wehaaportal.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#FormInicio {
+background-image: url(:/App/splashscreen.png);
+}</string>
+  </property>
+  <widget class="QLabel" name="pic_logo">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>171</width>
+     <height>31</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>171</width>
+     <height>31</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/App/fastfood.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="chk_init">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>270</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Mostrar siempre</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/Icons/png/icons8-delivery-time-100.png</normaloff>:/Icons/png/icons8-delivery-time-100.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="txt_welcome">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>561</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>
+¡Bienvenido a nuestro software integral para la gestión de establecimientos hosteleros! Agradecemos sinceramente que hayas elegido nuestra aplicación para simplificar y optimizar la administración de tu bar o restaurante. Con funciones avanzadas como la gestión de transacciones, control eficiente de mesas y personal, alertas de inventario y cierres de caja detallados, estamos comprometidos a proporcionarte una solución completa. La personalización avanzada, impresión adaptable y flexibilidad en los cierres hacen que nuestro programa sea la elección perfecta. ¡Gracias por confiar en nosotros para potenciar la eficiencia de tu negocio hostelero!</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignJustify|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="pic_wp">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>260</y>
+     <width>49</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Wehaa Portal Soft.</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/Wehaa/wehaaportal.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="pic_py">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>260</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Python</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/Icons/png/icons8-python-100.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="pic_github">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>260</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Github</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/Icons/png/icons8-github-100.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

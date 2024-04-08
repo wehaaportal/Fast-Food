@@ -72,12 +72,12 @@ def start_app(apps, Settings):
 			if Settings().UPDATES and is_connected_to_internet():
 				_Splash.showMessage("Checking for updates")
 				Updater()
-				time.sleep(0.4)
+				time.sleep(0.8)
 			
 			if Settings().BACKUP and TimeBackup():
 				_Splash.showMessage("Created backup")
 				CreateBackup()
-				time.sleep(0.4)
+				time.sleep(0.8)
 
 			_Splash.showMessage(TR_SPLASH_INIT)
 			time.sleep(0.5)	
