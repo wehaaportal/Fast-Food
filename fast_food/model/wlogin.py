@@ -84,8 +84,7 @@ class WLModel(QtWidgets.QMainWindow, Ui_fromLogin):
 	def _iniciar(self):
 		if self._validate():
 			_DB_User = self.DB.findOne("USERS",f"user='{self.txtUser.text()}'")
-			print(_DB_User)
-
+			
 			if _DB_User[0] is not None:
 				_DB_Pass = Crypt().decode(_DB_User[0][3])
 
