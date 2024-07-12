@@ -11,6 +11,7 @@ from PyQt6.QtGui import QPixmap
 ''' Core '''
 import fast_food
 from fast_food.define import *
+from fast_food.core.utils import restart_program, Usr_id
 from fast_food.conexion.database import DBase
 
 class Installer:
@@ -105,11 +106,12 @@ class Installer:
 		try:
 			if not self.reset:
 				db = DBase(name='ff_user')
-				db.create("id INTEGER PRIMARY KEY AUTOINCREMENT, user varchar(40) unique, pass varchar(32), photo blob, name varchar(40), roles varchar(32), created DATE","USERS")
+				db.create("id INTEGER PRIMARY KEY AUTOINCREMENT, uid TEXT unique, user varchar(40) unique, pass varchar(32), photo blob, name varchar(40), surname varchar(40), dob TEXT, gender varchar(10), roles varchar(32), created DATE","USERS")
 				time_created = datetime.now().strftime(TIME_FORMAT)
 				from fast_food.core.crypt import Crypt
-				clave_admin = Crypt(self.key).encode('admin') #ToDO: Si funciona mejorar el password de forma alfanumerica y caracteres especiales.
-				db.insert("USERS","user, pass, photo, name, roles, created", f"'admin', '{clave_admin}', 'none.png', 'Administrador', 'Administrador', '{time_created}'")
+				person = {'surname': 'Pacheco', 'name': 'Matias', 'dob': '00/00/0000', 'gender': 'X'}
+				clave_admin = Crypt(self.key).encode('access') #ToDO: Si funciona mejorar el password de forma alfanumerica y caracteres especiales.
+				db.insert("USERS","uid, user, pass, photo, name, surname, dob, gender, roles, created", (Usr_id(person),'admin', clave_admin, 'none.png', person["name"], person["surname"], person["dob"], person["gender"], 'Administrador', time_created))
 				db.close()
 			else:
 				print("Reset Settings, users are not modified")

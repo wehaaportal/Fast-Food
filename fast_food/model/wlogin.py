@@ -84,13 +84,14 @@ class WLModel(QtWidgets.QMainWindow, Ui_fromLogin):
 	def _iniciar(self):
 		if self._validate():
 			_DB_User = self.DB.findOne("USERS",f"user='{self.txtUser.text()}'")
+			print(_DB_User)
 
 			if _DB_User[0] is not None:
-				_DB_Pass = Crypt().decode(_DB_User[0][2])
+				_DB_Pass = Crypt().decode(_DB_User[0][3])
 
 				if _DB_Pass == self.txtPass.text():
-					self._RUN(_DB_User[0][4], _DB_User[0][5], _DB_User[0][3])					
-					log().info('Iniciando Usuario: {0} ({1})'.format(_DB_User[0][1], _DB_User[0][5]))
+					self._RUN(_DB_User[0][6], _DB_User[0][5], _DB_User[0][9], _DB_User[0][4])					
+					log().info('Iniciando Usuario: {0} ({1})'.format(_DB_User[0][5], _DB_User[0][9]))
 				else:
 					self.txtPass.setStyleSheet(
 						"border: none;border-left: 5px solid; "
@@ -110,11 +111,11 @@ class WLModel(QtWidgets.QMainWindow, Ui_fromLogin):
 					"border-left-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:1 rgba(255, 0, 0, 205));padding-left: 5px;"
 				)
 
-	def _RUN(self, name, roles, photo):
+	def _RUN(self, surname, name, roles, photo):
 		Settings().USER_NAME = name
 		Settings().USER_ROLES = roles
 
-		self.Main.txt_name_roles_2.setText( name +' ( '+roles+' )')
+		self.Main.txt_name_roles_2.setText( surname +', '+ name +' ( '+roles+' )')
 		self.Main.pic_avatar_2.setPixmap(QPixmap(f"{WORKING_FOLDER}/static/avatar/{photo}"))
 
 		self.close()

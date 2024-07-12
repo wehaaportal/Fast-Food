@@ -55,3 +55,4 @@ def is_connected_to_internet():
         return True
     except socket.error:
         return False
+    

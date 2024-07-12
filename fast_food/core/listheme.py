@@ -36,10 +36,10 @@ class QCustomQWidget(QWidget):
             self.textUpQLabel.setStyleSheet(''' color: rgb(33, 150, 243); ''')
             self.textDownQLabel.setStyleSheet(''' color: rgb(102, 187, 106); ''')
 
-    def setTextUp(self, text):
+    def setTextUp(self, text:str):
         self.textUpQLabel.setText(text)
 
-    def setTextDown(self, text):
+    def setTextDown(self, text:str):
         self.textDownQLabel.setText(text)
 
     def setIcon(self, imagePath):

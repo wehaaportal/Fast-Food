@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ''' Load '''
-from PyQt6.QtCore import Qt, QCoreApplication
-from PyQt6.QtWidgets import QApplication
+from PyQt6.QtCore import QCoreApplication
 
 tr = QCoreApplication.translate
 

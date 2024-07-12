@@ -6,6 +6,7 @@ import signal, sys, logging, platform, time
 
 ''' Core '''
 from fast_food.define import *
+from fast_food.core.utils import is_connected_to_internet
 from fast_food.core.translations import *
 from fast_food.core.splash import SplashScreen
 from fast_food.core.design import Design
@@ -29,7 +30,7 @@ def log():
 
 ''' Metadata '''
 __folder__ = "core"
-__version__ = "0.0.0.04"
+__version__ = "0.0.0.05"
 
 def start_app(apps, Settings):
 	signal.signal(signal.SIGINT, signal.SIG_DFL)

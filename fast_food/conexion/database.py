@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sqlite3, logging
+import sqlite3, logging, csv
 
 from fast_food.define import DATABASE_PATH  
 
@@ -27,7 +27,8 @@ class DBase:
     def close(self):
         if self.conn:
             self.conn.commit()
-            self.cursor.close()
+            if self.cursor:
+                self.cursor.close()
             self.conn.close()
 
     def __enter__(self):
@@ -49,13 +50,23 @@ class DBase:
 
     def insert(self, table, columns, values):
         try:
-            query = f'INSERT INTO {table}({columns}) VALUES ({values})'
-            self.cursor.execute(query)
+            # Asegurarse de que 'values' sea una tupla o lista
+            if not isinstance(values, (tuple, list)):
+                raise ValueError("Values must be a tuple or a list")
+
+            placeholders = ', '.join(['?'] * len(values))
+            query = f'INSERT INTO {table}({columns}) VALUES ({placeholders})'
+        
+            log().debug("Executing query: %s with values %s", query, values)
+        
+            self.cursor.execute(query, values)
             self.commit()
-            last_row_id = self.cursor.lastrowid
-            return last_row_id
+            return self.cursor.lastrowid
         except sqlite3.Error as e:
             log().warning('Error inserting data into DB: %s', e)
+            return None
+        except ValueError as ve:
+            log().warning('Value error: %s', ve)
             return None
 
     def update(self, table, set_clause, where_clause):
